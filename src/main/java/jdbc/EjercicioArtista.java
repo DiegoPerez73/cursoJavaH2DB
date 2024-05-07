@@ -62,8 +62,9 @@ public class EjercicioArtista {
 				pstmt.execute();
 				}
 				
-//				prepareStatement(sqlUpdate, Statement.RETURN_GENERATED_KEYS);
-				ResultSet result = stmt.getGeneratedKeys();
+				// Esto quedó inconcluso.
+//				// prepareStatement(sqlUpdate, Statement.RETURN_GENERATED_KEYS);
+				// ResultSet result = stmt.getGeneratedKeys();
 				
 	}
 }

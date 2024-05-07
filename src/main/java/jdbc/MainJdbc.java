@@ -58,7 +58,8 @@ public class MainJdbc {
 		String selectq = "SELECT * FROM Persona";
 		
 		// La respuesta sql de un select de una tabla, es de tipo ResultSet.
-		ResultSet result = stmt.executeQuery(selectq);		
+		// ResultSet result = stmt.executeQuery(selectq);
+		
 		try(ResultSet resultado = stmt.executeQuery(selectq)){
 		while(resultado.next())
 		System.out.println(
