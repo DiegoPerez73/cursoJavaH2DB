@@ -15,6 +15,7 @@ public class MainJdbc {
 		String USR = "sa";
 		String PWD = "123";
 		Connection connection = DriverManager.getConnection(URL, USR, PWD);
+		
 		Statement stmt = connection.createStatement();
 		
 //		 String sqlCreate = "CREATE TABLE Persona("
@@ -55,6 +56,22 @@ public class MainJdbc {
 //		String sqlDelete = "DELETE FROM Persona WHERE Id = 1";
 //		stmt.execute(sqlDelete);
 		
+		// ejecuto un lote. Con PreparedStatement(La mejor forma de trabajarlo). Agrego a la tabla con un for.
+//    	String[] nombres = new String []{"Victoria", "Ariel", "Sofia", "Elena", "Victor"};
+//		String[] apellidos = new String [] {"Don", "Donatti", "Costa", "Costa", "Sala"};
+//		String insertSQL = "INSERT INTO PERSONA(ID,NOMBRE,APELLIDO) VALUES (?,?,?)";
+//		try(PreparedStatement pstmt = connection.prepareStatement(insertSQL)){
+//			for(int i=0; i < nombres.length; i++) {
+//				int id = 10+i;
+//				pstmt.setInt(1, id);
+//				pstmt.setString(2, nombres[i]);
+//				pstmt.setString(3, apellidos[i]);
+//				pstmt.addBatch();
+//			}
+//			pstmt.executeBatch();
+//		}
+
+		
 		String selectq = "SELECT * FROM Persona";
 		
 		// La respuesta sql de un select de una tabla, es de tipo ResultSet.
@@ -90,7 +107,8 @@ public class MainJdbc {
 				pstmt.execute();
 				}
 				
-		
+		connection.close();
+		stmt.close();
 				
 	}
 

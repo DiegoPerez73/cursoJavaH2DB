@@ -14,6 +14,7 @@ public class EjercicioArtista {
 		String USR = "sa";
 		String PWD = "123";
 		Connection connection = DriverManager.getConnection(URL, USR, PWD);
+		
 		Statement stmt = connection.createStatement();
 
 //		String sqlCreate = "CREATE TABLE Artista("
@@ -42,14 +43,15 @@ public class EjercicioArtista {
 //		stmt.execute(sqlDelete);
 
 		// Imprimir en consola->
-//		String selectq = "SELECT * FROM Artista WHERE ID = 1";
-//		ResultSet result = stmt.executeQuery(selectq);
-//		try (ResultSet resultado = stmt.executeQuery(selectq)) {
-//			while (resultado.next())
-//				System.out.println(resultado.getInt("ID") + ": " + resultado.getString("Bio") + " "
-//						+ resultado.getDate("FechaNacimiento") + " " + resultado.getString("Apellido") + " "
-//						+ resultado.getString("Nombre") + " " + resultado.getString("Email"));
-//		}
+		String selectq = "SELECT * FROM Artista WHERE ID = 1";
+				
+		try (ResultSet resultado = stmt.executeQuery(selectq)) {
+			while (resultado.next())
+				System.out.println(resultado.getInt("ID") + ": " + resultado.getString("Bio") + " "
+						+ resultado.getDate("FechaNacimiento") + " " + resultado.getString("Apellido") + " "
+						+ resultado.getString("Nombre") + " " + resultado.getString("Email"));
+			
+		}
 		
 		String sqlUpdate = "UPDATE Artista SET NOMBRE = ?, "
 				+ "APELLIDO = ?, Email = ?, Bio = ? WHERE ID = ?";
@@ -63,8 +65,10 @@ public class EjercicioArtista {
 				}
 				
 				// Esto quedó inconcluso.
-//				// prepareStatement(sqlUpdate, Statement.RETURN_GENERATED_KEYS);
+				// prepareStatement(sqlUpdate, Statement.RETURN_GENERATED_KEYS);
 				// ResultSet result = stmt.getGeneratedKeys();
 				
+				connection.close();
+				stmt.close();
 	}
 }
