@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 public class EjercicioArtista {
 
-	public long insertar(Connection connection, String bio, String fechaNacimiento, String apellido, String nombre,
+	public static long insertar(Connection connection, String bio, String fechaNacimiento, String apellido, String nombre,
 			String email) throws SQLException {
 		String sql = "INSERT INTO Artista(Bio, FechaNacimiento, Apellido, Nombre, Email)" + "VALUES(?,?,?,?,?)";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -100,11 +100,11 @@ public class EjercicioArtista {
 //			}
 //		}
 
-		EjercicioArtista ejercicioArtista = new EjercicioArtista();
-		long idNuevo = ejercicioArtista.insertar(connection, "bioTest", "1990-04-05", "apellidoTest", "nombreTest",
+
+		long idNuevo = insertar(connection, "bioTest", "1990-04-05", "apellidoTest", "nombreTest",
 				"emailTest");
 		System.out.println(idNuevo);
-
+		
 		connection.close();
 		stmt.close();
 
